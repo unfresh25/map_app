@@ -33,6 +33,15 @@ df2.reset_index(inplace=True)
 
 States = df2["State"].unique()
 
+bento_style = {
+    "background-color": "rgb(17, 17, 17, 0.7)",
+    "backdrop-filter": "blur(2px)",
+    "border-radius": "0.75rem",
+    "border-color": "rgba(0, 0, 0, 0.1)",
+    "box-shadow": "0 0 0 1px rgba(255, 255, 255, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.05)",
+    "max-height": "435px"
+}
+
 app.layout = html.Div([
     html.Header([
         html.Article([
@@ -101,36 +110,15 @@ app.layout = html.Div([
     html.Section([
         html.Article([
             dcc.Graph(id='my_bee_map', style={"width": "90%", "margin": "0 auto"})
-        ], style={
-        "background-color": "rgb(17, 17, 17, 0.7)", 
-        "backdrop-filter": "blur(2px)", 
-        "border-radius": "0.75rem", 
-        "border-color": "rgba(0, 0, 0, 0.1)",
-        "box-shadow": "0 0 0 1px rgba(255, 255, 255, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.05)",
-        "grid-column": "span 6 / span 4",
-        "max-height": "435px"}),
+        ], style={**bento_style, "grid-column": "span 10"}, className="bento1"),
 
         html.Article([            
             dcc.Graph(id='pie_graph')
-        ], style={
-        "background-color": "rgb(17, 17, 17, 0.7)", 
-        "backdrop-filter": "blur(2px)", 
-        "border-radius": "0.75rem", 
-        "border-color": "rgba(0, 0, 0, 0.1)",
-        "box-shadow": "0 0 0 1px rgba(255, 255, 255, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.05)",
-        "grid-column": "span 4 / span 6",
-        "max-height": "435px"}),
+        ], style={**bento_style, "grid-column": "span 10"}, className="bento2"),
 
         html.Article([
             dcc.Graph(id='line_graph', style={"width": "90%", "margin": "0 auto"})
-        ], style={
-        "background-color": "rgb(17, 17, 17, 0.7)", 
-        "backdrop-filter": "blur(2px)", 
-        "border-radius": "0.75rem", 
-        "border-color": "rgba(0, 0, 0, 0.1)",
-        "box-shadow": "0 0 0 1px rgba(255, 255, 255, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.05)",
-        "grid-column": "span 10",
-        "max-height": "435px"})
+        ], style={**bento_style, "grid-column": "span 10"}, className="bento3")
 
     ], style={"wdith": "100%", "max-width": "1400px",
               "display": "grid",
