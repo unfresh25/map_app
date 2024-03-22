@@ -28,6 +28,18 @@
     .footer-text {
         align-items: center;
     }
+
+    nav{
+        flex-direction: column;
+    }
+
+    .year-drop{
+        width: 100% !important;
+    }
+
+    .cause-drop{
+        width: 100% !important;
+    }
 }
 
 @media only screen and (max-width: 1250px) {
