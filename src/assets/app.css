@@ -1,8 +1,60 @@
-@media (min-width: 1250px) {
+@media only screen and (max-width: 768px) {
+    .body-container {
+        width: 95% !important;
+        padding: 10px !important;
+    }
     .bento1{
-        grid-column: span 6 !important;
+        grid-column: span 10 !important;
+    }
+    #my_bee_map{
+        width: 100% !important;
+    }
+    .gtitle{
+        font-size: 11px !important;
+        white-space: initial !important;
+        text-overflow: initial !important;
     }
     .bento2{
-        grid-column: span 4 !important;
+        grid-column: span 10 !important;
     }
+    .section-bentos{
+        padding: 0 !important;
+    }
+
+    footer {
+        flex-direction: column-reverse;
+    }
+
+    .footer-text {
+        align-items: center;
+    }
+}
+
+@media only screen and (max-width: 1250px) {
+    .body-container {
+        width: 95% !important;
+        padding: 10px !important;
+    }
+    .bento1{
+        grid-column: span 10 !important;
+    }
+    #my_bee_map{
+        width: 100% !important;
+    }
+    .gtitle{
+        font-size: 15px !important;
+        white-space: initial !important;
+        text-overflow: initial !important;
+    }
+    .bento2{
+        grid-column: span 10 !important;
+    }
+}
+
+.Select-value-label {
+    color: #007eff !important;
+}
+
+.gtitle {
+    fill: #fff !important;
 }

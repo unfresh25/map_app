@@ -43,23 +43,11 @@ bento_style = {
 }
 
 app.layout = html.Div([
-    html.Header([
-        html.Article([
-            html.Span("Jorge Borja S."),
-            html.Span("Visualización Científica"),
-            html.Span("Maestría en Estadística Aplicada")
-        ], style={"display": "flex", "flex-direction": "column"}),
-        html.Img(src="https://www.uninorte.edu.co/o/uninorte-theme/images/uninorte/footer_un/logo.png", style={"height": "50px"})
-    ], style={"display": "flex", "justify-content": "space-between", "align-items": "center"}),
-
-    html.Hr(),
-
     html.H1("Average Percentage of Bee Colonies Affected in the United States Over Years", 
             style={
                 'text-align': 'center', 
                 'font-size': '25px', 
                 "text-wrap": "pretty",
-                "color": "#9f9f9f",
             }
         ),
     
@@ -110,11 +98,11 @@ app.layout = html.Div([
     html.Section([
         html.Article([
             dcc.Graph(id='my_bee_map', style={"width": "90%", "margin": "0 auto"})
-        ], style={**bento_style, "grid-column": "span 10"}, className="bento1"),
+        ], style={**bento_style, "grid-column": "span 6"}, className="bento1"),
 
         html.Article([            
             dcc.Graph(id='pie_graph')
-        ], style={**bento_style, "grid-column": "span 10"}, className="bento2"),
+        ], style={**bento_style, "grid-column": "span 4"}, className="bento2"),
 
         html.Article([
             dcc.Graph(id='line_graph', style={"width": "90%", "margin": "0 auto"})
@@ -126,19 +114,23 @@ app.layout = html.Div([
               "grid-auto-rows": "28rem",
               "gap": "1rem",
               "margin": "0 auto",
-              "padding": "10px"}),
+              "padding": "10px"}
+    , className="section-bentos"),
 
     html.Hr(),
 
     html.Footer([
         html.Article([
-            html.Span("Powered by Plotly Dash"),
-        ])
-    ], style={"margin-bottom": "20px", "font-size": "15px"}),
+            html.Span("Jorge Borja S."),
+            html.Span("Visualización Científica"),
+            html.Span("Maestría en Estadística Aplicada")
+        ], style={"display": "flex", "flex-direction": "column"}, className="footer-text"),
+        html.Img(src="https://www.uninorte.edu.co/o/uninorte-theme/images/uninorte/footer_un/logo.png", style={"height": "50px"})
+    ], style={"display": "flex", "justify-content": "space-between", "align-items": "center"}),
 
     html.Br()    
     
-], style={"height": "100vh", "margin": "0 auto", "padding": "50px", "width": "90%"})
+], style={"height": "100vh", "margin": "0 auto", "padding": "50px", "width": "90%"}, className="body-container")
 
 state = ""
 
@@ -212,23 +204,20 @@ def update_line_graph(affected_by, selected_states):
                     name=f'{state}, {affected_by_cod[effect]}',
                     text=temp_df['Pct of Colonies Impacted'].round(2),
                     textposition='top center',
+                    legendgroup=state,
                     marker=dict(color=colors[color_index])
                 ))
                 color_index = (color_index + 1) % len(colors)
 
     selected_states_str = 'Comparison of Average % of Bee Colonies Affected Over Years'
     line_fig.update_layout(
+        legend={'font': {'color': 'gray'}, 'orientation': 'h'},
+        legend_y=1,
         xaxis_title='Year',
         yaxis_title='% of Bee Colonies Impacted',
         title=selected_states_str,
-        xaxis=dict(
-            showgrid=False,
-            showline=False
-        ),
-        yaxis=dict(
-            showgrid=False,
-            showline=False
-        ),
+        xaxis={'showgrid': False, 'tickfont': {'color': '#fff'}, 'color': '#fff'},
+        yaxis={'showgrid': False, 'tickfont': {'color': '#fff'}, 'color': '#fff'},
         template='none'
     )
     line_fig.update_layout(paper_bgcolor='rgba(0, 0, 0, 0.0)', plot_bgcolor = 'rgba(0, 0, 0, 0.0)')
