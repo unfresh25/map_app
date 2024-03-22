@@ -67,7 +67,7 @@ app.layout = html.Div([
                 style={"color": "black", "background-color": "transparent", "border": "none", "border-bottom": "1px solid #5f5f5f"},
                 placeholder="Select a year..."
             )
-        ], style={"width": "20%"}),
+        ], style={"width": "20%"}, className='year-drop'),
 
         html.Article([
             dcc.Dropdown(
@@ -76,9 +76,9 @@ app.layout = html.Div([
                 value=affected_by[0],
                 style={"color": "black", "background-color": "transparent", "border": "none", "border-bottom": "1px solid #5f5f5f"},
                 multi=True,
-                placeholder="Select a cause..."
+                placeholder="Select an affection..."
             )
-        ], style={"width": "30%"}),
+        ], style={"width": "30%"}, className='cause-drop'),
 
         html.Article([
             dcc.Dropdown(
